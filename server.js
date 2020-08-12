@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const WilderModel = require("./models/Wilder");
+const wilderController = require("./controllers/wilder");
 const app = express();
 
 //Database
@@ -11,28 +12,16 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err) => console.log(err));
 
+//Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//Routes
 app.get("/", (req, res) => {
   res.send("Hello World");
-  // test a wilder creation
-  WilderModel.init().then(() => {
-    const firstWilder = new WilderModel({
-      name: "First Wilder",
-      city: "San Francisco",
-      skills: [
-        { title: "HTML", votes: 10 },
-        { title: "React", votes: 5 },
-      ],
-    });
-    firstWilder
-      .save()
-      .then((result) => {
-        console.log("success:", result);
-      })
-      .catch((err) => {
-        console.log("error:", err);
-      });
-  });
 });
+
+app.post("/api/wilder/create", wilderController.create);
 
 //Start Server
 app.listen(3000, () => console.log("Server started on 3000"));

@@ -13,3 +13,7 @@
 - Create the model
 - Save a document
 - Ensure unique values [help here](https://luxiyalu.com/mongoose-unique-not-working/)
+
+### Write the controller
+
+- Handle the request "Create"
