@@ -10,3 +10,5 @@
 ### Write the model
 
 - Connect to MongoDb
+- Create the model
+- Save a document

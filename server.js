@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const WilderModel = require("./models/Wilder");
 const app = express();
 
 //Database
@@ -10,6 +11,23 @@ mongoose
 
 app.get("/", (req, res) => {
   res.send("Hello World");
+  // test a wilder creation
+  const firstWilder = new WilderModel({
+    name: "First Wilder",
+    city: "San Francisco",
+    skills: [
+      { title: "HTML", votes: 10 },
+      { title: "React", votes: 5 },
+    ],
+  });
+  firstWilder
+    .save()
+    .then((result) => {
+      console.log("success:", result);
+    })
+    .catch((err) => {
+      console.log("error:", err);
+    });
 });
 
 //Start Server
