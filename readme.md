@@ -4,26 +4,9 @@
 
 ### Create the application
 
+- install express and nodemon
 - Display "Hello World" on ```http://localhost:3000```
-- Connect to mongo Db
 
 ### Write the model
 
-### Write the controller
-
-- create
-- read
-- update
-- delete
-
-### Write routes
-
-- test with vsc
-
-### Replace promises with async / await
-
-- handle errors with try catch
-- use a wrapper function
-- use ```express-async-handler```
-
-### Add JWT auth
+- Connect to MongoDb
