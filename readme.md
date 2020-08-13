@@ -19,3 +19,4 @@
 - Handle the request "Create"
 - Handle the request "Read"
 - Handle the request "Update"
+- Handle the request "Delete"

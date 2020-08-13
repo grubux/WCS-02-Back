@@ -7,7 +7,7 @@ module.exports = {
       wilder
         .save()
         .then((result) => {
-          res.json({ success: true, result: result });
+          res.json({ success: true, result });
         })
         .catch((err) => {
           res.json({ success: false, result: err });
@@ -19,7 +19,7 @@ module.exports = {
       .then((result) => {
         if (!result) res.json({ success: false, result: "No wilders found" });
 
-        res.json({ sucess: true, result: result });
+        res.json({ sucess: true, result });
       })
       .catch((err) => {
         console.log(err);
@@ -37,5 +37,17 @@ module.exports = {
       .catch((err) => {
         res.json({ success: false, result: err });
       });
+  },
+  delete: (req, res) => {
+    WilderModel.deleteOne({ _id: req.body._id })
+      .then((result) => {
+        if (!result)
+          res.json({
+            success: false,
+            result: "No wilder with such ID was found",
+          });
+        res.json({ success: true, result });
+      })
+      .catch((err) => res.json({ success: false, result: err }));
   },
 };
