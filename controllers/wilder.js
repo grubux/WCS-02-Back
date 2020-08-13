@@ -14,4 +14,16 @@ module.exports = {
         });
     });
   },
+  read: (req, res) => {
+    WilderModel.find()
+      .then((result) => {
+        if (!result) res.json({ success: false, result: "No wilders found" });
+
+        res.json({ sucess: true, result: result });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ success: false, result: err });
+      });
+  },
 };

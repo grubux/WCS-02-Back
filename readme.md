@@ -17,3 +17,4 @@
 ### Write the controller
 
 - Handle the request "Create"
+- Handle the request "Read"
