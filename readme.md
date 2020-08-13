@@ -20,3 +20,7 @@
 - Handle the request "Read"
 - Handle the request "Update"
 - Handle the request "Delete"
+
+### Improve code quality
+
+- Replace Promise by async await for Create and Read methods
