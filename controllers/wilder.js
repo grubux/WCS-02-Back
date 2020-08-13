@@ -26,4 +26,16 @@ module.exports = {
         res.json({ success: false, result: err });
       });
   },
+  update: (req, res) => {
+    WilderModel.update({ _id: req.body._id }, req.body)
+      .then((result) => {
+        if (!result)
+          res.json({ success: false, result: "No such wilder exists" });
+
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json({ success: false, result: err });
+      });
+  },
 };
