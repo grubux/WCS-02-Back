@@ -29,5 +29,12 @@ app.get("/api/wilder/read", asyncHandler(wilderController.read));
 app.put("/api/wilder/update", asyncHandler(wilderController.update));
 app.delete("/api/wilder/delete", asyncHandler(wilderController.delete));
 
+app.use((error, req, res, next) => {
+  if (error.name === "MongoError" && error.code === 11000) {
+    res.status(400);
+    res.json({ success: false, message: "The name is already used" });
+  }
+});
+
 //Start Server
 app.listen(3000, () => console.log("Server started on 3000"));
