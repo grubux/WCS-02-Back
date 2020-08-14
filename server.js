@@ -16,13 +16,19 @@ mongoose
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+function runAsyncWrapper(callback) {
+  return function (req, res, next) {
+    callback(req, res, next).catch(next);
+  };
+}
+
 //Routes
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.post("/api/wilder/create", wilderController.create);
-app.get("/api/wilder/read", wilderController.read);
+app.post("/api/wilder/create", runAsyncWrapper(wilderController.create));
+app.get("/api/wilder/read", runAsyncWrapper(wilderController.read));
 app.put("/api/wilder/update", wilderController.update);
 app.delete("/api/wilder/delete", wilderController.delete);
 

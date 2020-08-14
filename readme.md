@@ -26,3 +26,4 @@
 - Replace Promise by async await for Create and Read methods
 - Use Express default error handler
 - Replace the try-catch block by an async function
+- Use a High order function to wrap async errors
