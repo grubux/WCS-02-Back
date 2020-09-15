@@ -29,3 +29,4 @@
 - Use a High order function to wrap async errors
 - Use express-async-handler
 - Handle duplicate name error
+- Handle not found error

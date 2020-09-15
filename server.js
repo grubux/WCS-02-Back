@@ -31,6 +31,11 @@ app.get("/api/wilder/read", asyncHandler(wilderController.read));
 app.put("/api/wilder/update", asyncHandler(wilderController.update));
 app.delete("/api/wilder/delete", asyncHandler(wilderController.delete));
 
+app.get("*", (req, res) => {
+  res.status(404);
+  res.send({ success: false, message: "Wrong adress" });
+});
+
 app.use((error, req, res, next) => {
   if (error.name === "MongoError" && error.code === 11000) {
     res.status(400);
