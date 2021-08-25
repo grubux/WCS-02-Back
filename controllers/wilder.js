@@ -12,7 +12,7 @@ module.exports = {
     res.json({ success: true, result });
   },
   update: async (req, res) => {
-    const result = await WilderModel.update({ _id: req.body._id }, req.body);
+    const result = await WilderModel.updateOne({ _id: req.body._id }, req.body);
     res.json(result);
   },
   delete: async (req, res) => {
