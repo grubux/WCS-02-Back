@@ -11,28 +11,12 @@ module.exports = {
     const result = await WilderModel.find();
     res.json({ success: true, result });
   },
-  update: (req, res) => {
-    WilderModel.update({ _id: req.body._id }, req.body)
-      .then((result) => {
-        if (!result)
-          res.json({ success: false, result: "No such wilder exists" });
-
-        res.json(result);
-      })
-      .catch((err) => {
-        res.json({ success: false, result: err });
-      });
+  update: async (req, res) => {
+    const result = await WilderModel.update({ _id: req.body._id }, req.body);
+    res.json(result);
   },
-  delete: (req, res) => {
-    WilderModel.deleteOne({ _id: req.body._id })
-      .then((result) => {
-        if (!result)
-          res.json({
-            success: false,
-            result: "No wilder with such ID was found",
-          });
-        res.json({ success: true, result });
-      })
-      .catch((err) => res.json({ success: false, result: err }));
+  delete: async (req, res) => {
+    const result = await WilderModel.deleteOne({ _id: req.body._id });
+    res.json({ success: true, result });
   },
 };
