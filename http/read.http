@@ -1,1 +1,1 @@
-GET http://localhost:3000/api/wilder/read HTTP/1.1
+GET http://localhost:5000/api/wilders HTTP/1.1

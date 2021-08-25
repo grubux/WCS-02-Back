@@ -26,10 +26,10 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.post("/api/wilder/create", asyncHandler(wilderController.create));
-app.get("/api/wilder/read", asyncHandler(wilderController.read));
-app.put("/api/wilder/update", asyncHandler(wilderController.update));
-app.delete("/api/wilder/delete", asyncHandler(wilderController.delete));
+app.post("/api/wilders", asyncHandler(wilderController.create));
+app.get("/api/wilders", asyncHandler(wilderController.read));
+app.put("/api/wilders", asyncHandler(wilderController.update));
+app.delete("/api/wilders", asyncHandler(wilderController.delete));
 
 app.get("*", (req, res) => {
   res.status(404);

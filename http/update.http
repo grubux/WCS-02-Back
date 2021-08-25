@@ -1,4 +1,4 @@
-PUT http://localhost:3000/api/wilder/update HTTP/1.1
+PUT http://localhost:5000/api/wilders HTTP/1.1
 content-type: application/json
 
 {
