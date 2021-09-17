@@ -26,10 +26,10 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.post("/api/wilders", asyncHandler(wilderController.create));
-app.get("/api/wilders", asyncHandler(wilderController.read));
-app.put("/api/wilders", asyncHandler(wilderController.update));
-app.delete("/api/wilders", asyncHandler(wilderController.delete));
+app.post("/api/v2/wilders/create", asyncHandler(wilderController.create));
+app.get("/api/v2/wilders/read", asyncHandler(wilderController.read));
+app.put("/api/v2/wilders/update", asyncHandler(wilderController.update));
+app.delete("/api/v2/wilders/delete", asyncHandler(wilderController.delete));
 
 app.get("*", (req, res) => {
   res.status(404);
@@ -37,7 +37,9 @@ app.get("*", (req, res) => {
 });
 
 app.use((error, req, res, next) => {
-  if (error.name === "MongoError" && error.code === 11000) {
+  console.log(error);
+  if (error.name === "MongoServerError" && error.code === 11000) {
+    console.log("The name is already used");
     res.status(400);
     res.json({ success: false, message: "The name is already used" });
   }
