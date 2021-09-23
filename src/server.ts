@@ -1,10 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express, { Response, Request, NextFunction } from "express";
+import mongoose from "mongoose";
 const asyncHandler = require("express-async-handler");
-const cors = require("cors");
+import cors from "cors";
 
-const WilderModel = require("./models/Wilder");
-const wilderController = require("./controllers/wilder");
+import WilderModel from "./models/Wilder";
+import wilderController from "./controllers/wilder";
 
 const app = express();
 
@@ -36,12 +36,12 @@ app.get("*", (req, res) => {
   res.send({ success: false, message: "Wrong adress" });
 });
 
-app.use((error, req, res, next) => {
+
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
   console.log(error);
   if (error.name === "MongoServerError" && error.code === 11000) {
     console.log("The name is already used");
-    res.status(400);
-    res.json({ success: false, message: "The name is already used" });
+    res.send(400).json({ success: false, message: "The name is already used" });
   }
 });
 
